@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 
 @Value
 @Builder
-//@RequiredArgsConstructor
 @JsonDeserialize(builder = TransferRequest.TransferRequestBuilder.class)
 public class TransferRequest {
 

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.bank</groupId>
-	<artifactId>bankapp</artifactId>
+	<artifactId>fc-bank-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bankapp</name>
-	<description>bank app</description>
+	<name>fc-bank-app</name>
+	<description>fc-bank-app</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -74,26 +74,16 @@
 			<version>2.4.7</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency> <!-- enables mocking of classes (in addition to interfaces) -->
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-			<version>3.2.4</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency> <!-- enables mocking of classes without default constructor (together with
-        CGLIB) -->
-			<groupId>org.objenesis</groupId>
-			<artifactId>objenesis</artifactId>
-			<version>2.5.1</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.iban4j/iban4j -->
 		<dependency>
 			<groupId>org.iban4j</groupId>
 			<artifactId>iban4j</artifactId>
 			<version>3.2.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -101,6 +91,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>6.3.2</version>
+				<configuration>
+					<url>jdbc:postgresql://localhost:5432/fc-auction-db</url>
+					<user>postgres</user>
+					<password>admin</password>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

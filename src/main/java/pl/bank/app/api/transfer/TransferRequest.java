@@ -16,9 +16,9 @@ import java.math.BigDecimal;
 
 @Value
 @Builder
-@RequiredArgsConstructor
-public
-class TransferRequest {
+//@RequiredArgsConstructor
+@JsonDeserialize(builder = TransferRequest.TransferRequestBuilder.class)
+public class TransferRequest {
 
     @Min(1)
     @JsonProperty("ownerId")
@@ -40,4 +40,8 @@ class TransferRequest {
     @NotNull
     @JsonProperty("totalPrice")
     private BigDecimal amount;
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static class TransferRequestBuilder {
+    }
 }

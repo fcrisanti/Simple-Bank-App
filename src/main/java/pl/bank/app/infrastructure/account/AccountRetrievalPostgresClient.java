@@ -17,4 +17,9 @@ class AccountRetrievalPostgresClient implements AccountRetrievalClient {
     public Optional<Account> findById(Long accountId) {
        return accountRepository.findById(accountId);
     }
+
+    @Override
+    public Optional<Account> findByAccountNumber(String accountNumber) {
+        return accountRepository.findAccountByAccountNumber(accountNumber);
+    }
 }

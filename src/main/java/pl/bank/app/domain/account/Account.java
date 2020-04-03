@@ -35,7 +35,6 @@ import java.util.Set;
 @Setter(AccessLevel.PRIVATE)
 public class Account extends Auditable {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "account_sequence")
     @SequenceGenerator(name = "account_sequence")

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.bank.app.api.transfer.TransferRequest;
 import pl.bank.app.shared.Auditable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,4 +46,14 @@ class Transfer extends Auditable {
         transfer.setAuctionWinnerAccountNumber(createTransferCommand.getAuctionWinnerAccountNumber());
         return transfer;
     };
+
+    public TransferRequest generateTransferRequest() {
+        return TransferRequest.builder()
+                .amount(this.getAmount())
+                .auctionOwnerAccountId(this.getAuctionOwnerAccountId())
+                .auctionWinnerAccountNumber(this.getAuctionWinnerAccountNumber())
+                .auctionOwnerId(this.getAuctionOwnerId())
+                .title(this.getTitle())
+                .build();
+    }
 }

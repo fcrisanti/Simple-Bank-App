@@ -27,7 +27,7 @@ class TransferRetrievalRestClient implements TransferRetrievalClient {
         this.pendingTransfersUrl = pendingTransferUrl;
     }
 
-    @Override  //do dodania metoda pobierająca listę
+    @Override
     public List<CreateTransferCommand> getTransferRequests() {
         List<TransferRequest> result = restTemplate.exchange(
                 pendingTransfersUrl,
@@ -39,7 +39,6 @@ class TransferRetrievalRestClient implements TransferRetrievalClient {
         return result.stream()
                 .map(CreateTransferCommandMapper::map)
                 .collect(Collectors.toList());
-
     }
 }
 
